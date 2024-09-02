@@ -1,0 +1,98 @@
+<div #toInputField style="height: 400px;"></div>
+<!-- This creates a div with a reference (#mapContainer) that will be used by ViewChild to access the div element. -->
+<!-- 
+    To use the Google Maps Directions Service and display map details in a new component, you can follow these steps:
+
+Install the Google Maps JavaScript API:
+Make sure you have the Google Maps JavaScript API script included in your project. You typically include it in your HTML file like this:
+
+html
+-->
+<!-- Replace YOUR_API_KEY with your actual Google Maps API key -->
+<!--<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+Create a new component:
+Create a new Angular component that will handle the map display. You can use the Angular CLI to generate a new component:
+
+bash
+Copy code
+ng generate component map
+Update the map component:
+Update the newly generated map.component.ts file to include the following code:
+
+typescript
+Copy code
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+
+@Component({
+  selector: 'app-map',
+  templateUrl: './map.component.html',
+  styleUrls: ['./map.component.css']
+})
+export class MapComponent implements OnInit {
+  @ViewChild('mapContainer') mapContainer: ElementRef;
+
+  directionsService = new google.maps.DirectionsService();
+  directionsRenderer = new google.maps.DirectionsRenderer();
+  haight = new google.maps.LatLng(37.7699298, -122.4469157);
+
+  ngOnInit() {
+    this.initMap();
+  }
+
+  initMap() {
+    const mapOptions = {
+      zoom: 14,
+      center: this.haight
+    };
+
+    const map = new google.maps.Map(this.mapContainer.nativeElement, mapOptions);
+
+    this.directionsRenderer.setMap(map);
+
+    const request = {
+      origin: 'San Francisco, CA',
+      destination: 'Mountain View, CA',
+      travelMode: 'DRIVING'
+    };
+
+    this.directionsService.route(request, (result, status) => {
+      if (status == 'OK') {
+        this.directionsRenderer.setDirections(result);
+      }
+    });
+  }
+}
+Update the map component HTML file (map.component.html):
+Include the following code in your map.component.html:
+
+html
+Copy code
+
+Use the MapComponent in your application:
+Now, you can use the app-map element in any other component's template to display the map:
+
+html
+Copy code
+<app-map></app-map>
+Make sure to include the MapComponent in the module where you want to use it (usually in the app.module.ts).
+
+typescript
+Copy code
+// app.module.ts
+import { MapComponent } from './map/map.component';
+
+@NgModule({
+  declarations: [
+    // ... other components
+    MapComponent
+  ],
+  // ...
+})
+Remember to replace 'YOUR_API_KEY' in the Google Maps API script with your actual API key. Ensure that your API key has the necessary permissions for the Maps JavaScript API and the Directions API. Additionally, you may need to set up billing to enable these services. Refer to the Google Maps JavaScript API documentation for more details on obtaining an API key and enabling the required APIs.
+
+
+
+
+User
+oh for the from and destination inputs make it such that pressing enter automatically selects the first option
+ -->

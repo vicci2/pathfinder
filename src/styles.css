@@ -1,0 +1,55 @@
+/* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Auth Component shared css */
+
+  .forgotPas{
+    font-size: 16px;
+    color: gold;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .alt{
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+  }
+  .alt span{color: gold;}
+  .content .mat-hint{
+    padding: 1rem;
+  }
+  .orLinediv{
+    border: 1px solid black;
+    position:relative;
+  }
+  .orLinediv p{
+    position: absolute;
+    background: white;
+    padding: .4rem;
+    transform: translateY(-50%);
+    left: 48%;
+  }
+  .googleCard{
+    margin: 1.5rem 0;
+    cursor: pointer;
+  }
+  .googleCardContainer{
+    background: transparent;
+    padding: .8rem ;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-weight: bold;
+}
+*::-webkit-scrollbar{
+  width: 0;
+}

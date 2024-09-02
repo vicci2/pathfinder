@@ -1,0 +1,65 @@
+<section class="container">     
+<article class="inputArea">
+  <!-- FAB with menu options -->
+  <button mat-fab class="fab-button" [matMenuTriggerFor]="menu" >
+    <mat-icon>add</mat-icon>
+  </button>
+  <!-- Menu options -->
+  <mat-menu #menu="matMenu" yPosition="below" xPosition="before">
+    <button mat-menu-item>
+        <mat-icon>directions_walk</mat-icon> Walk
+    </button>
+    <button mat-menu-item>
+        <mat-icon>directions_car</mat-icon> Car
+    </button>
+    <button mat-menu-item>
+        <mat-icon>motorcycle</mat-icon> Motorcycle
+    </button>
+    <!-- Add more options/icons as needed -->
+  </mat-menu>
+
+  <div class="inputArea">
+      <form [formGroup]="tripForm" class="inputArea"> 
+        <mat-form-field appearance="outline" class="hidden">
+          <mat-label>Email Address</mat-label>
+          <input type="email" formControlName="email" matInput>
+          <mat-icon matSuffix>mail</mat-icon>
+        </mat-form-field>              
+  
+        <mat-form-field>
+          <mat-label>FROM</mat-label>
+          <input matInput #fromInputField [placeholder]="placeholder">
+          <!-- Clearable input with close icon -->
+          <button mat-icon-button matSuffix *ngIf="fromInputField.value" (click)="clearInput('fromInputField')">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+  
+        <mat-form-field>
+          <mat-label>Destination</mat-label>
+          <input matInput #toInputField [placeholder]="placeholder">
+          <!-- Clearable input with close icon -->
+          <button mat-icon-button matSuffix *ngIf="toInputField.value" (click)="clearInput('toInputField')">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+  
+        <div class="button">
+          <button mat-button type="submit" [disabled]="tripForm.invalid" (click)="onSubmit(tripForm.value)">
+            <mat-icon slot="start">directions_car</mat-icon>
+            Make Trip
+          </button>
+        </div>
+      </form>
+    </div>  
+</article>
+  
+
+<div class="displayArea" [hidden]="!fromData?.address && !toData?.address">
+  <div class="carDisp">
+    <app-place-details [data]="fromData"></app-place-details>
+    <app-place-details [data]="toData"></app-place-details>
+  </div>
+  <app-map-display [from]="fromData" [to]="toData"></app-map-display>
+</div>
+</section>

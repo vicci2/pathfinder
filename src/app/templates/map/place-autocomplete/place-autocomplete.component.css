@@ -1,0 +1,40 @@
+.container {
+    padding: 0.5rem 1rem;
+
+    .inputArea {
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        .button {
+          margin: auto 0;
+        }
+        .hidden{
+            visibility: hidden;
+            display: none;
+        }
+    }
+
+    .displayArea[hidden] {
+        display: none;        
+    }
+    .displayArea {
+        display: flex;
+        height: calc(100vh - 100px);
+
+        .carDisp {
+            width: 30%;
+            padding: 0 .8rem 0  0;
+            height: inherit;
+            overflow: auto;
+
+            > * {
+                margin-bottom: 16px;
+            }
+        }
+
+        app-map-display {
+            width: 70%;
+            height: inherit; 
+        }
+    }
+}

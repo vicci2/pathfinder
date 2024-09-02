@@ -1,0 +1,58 @@
+<div class="container flexcol">
+  <div class="flexcol content" [formGroup]="logForm">
+      <mat-icon matSuffix class="icon">person</mat-icon>
+    <div class="flexrow">
+        <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input type="text" formControlName="firstName" matInput>
+        <mat-icon matSuffix>person</mat-icon>
+        <mat-error *ngIf="hasError('firstName', 'required')">First name is required!</mat-error>
+        <mat-error *ngIf="hasError('firstName', 'minlength')">First name is too short!</mat-error>
+        <mat-error *ngIf="hasError('firstName', 'maxlength')">First name is too long!</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input type="text" formControlName="lastName" matInput>
+        <mat-icon matSuffix>person</mat-icon>
+        <mat-error *ngIf="hasError('lastName', 'required')">Last name is required!</mat-error>
+        <mat-error *ngIf="hasError('lastName', 'minlength')">Last name is too short!</mat-error>
+        <mat-error *ngIf="hasError('lastName', 'maxlength')">Last name is too Long!</mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email Address</mat-label>
+      <input type="email" formControlName="email" matInput >
+      <mat-icon matSuffix>mail</mat-icon>
+      <mat-error *ngIf="hasError('email', 'required') || hasError('email', 'email')">A valid Email is required!</mat-error>
+    </mat-form-field>
+    
+
+    <article class="flexrow">
+      <mat-form-field>
+        <mat-label>FROM</mat-label>
+        <input matInput #fromInputField [placeholder]="placeholder">
+        <!-- Clearable input with close icon -->
+        <button mat-icon-button matSuffix *ngIf="fromInputField.value" (click)="clearInput('fromInputField')">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      
+      <mat-form-field>
+        <mat-label>Destination</mat-label>
+        <input matInput #toInputField [placeholder]="placeholder">
+        <!-- Clearable input with close icon -->
+        <button mat-icon-button matSuffix *ngIf="toInputField.value" (click)="clearInput('toInputField')">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      
+    </article>
+
+    <button mat-raised-button color="primary" (click)="onSubmit(logForm.value)">
+      <mat-icon matSuffix>login</mat-icon>
+      <span>Login</span>
+    </button>           
+  </div>
+</div>  

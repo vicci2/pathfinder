@@ -1,0 +1,7 @@
+.placeImg{
+    height: 200px;
+    object-fit: cover;
+}
+mat-card{
+    margin-bottom: .6rem;
+}

@@ -1,0 +1,38 @@
+<div  *ngIf="authService.currentUser$ | async">
+  <section class="container responsiveGrid">
+    <mat-card class="example-card" *ngFor="let item of dataSource.data" [class.example-card]="true">
+      <mat-card-content>
+        <div class="pics">
+          <div class="from">
+            <mat-card-header>From</mat-card-header>
+            <div class="image-container">
+              <img mat-card-image [src]="item.fromData.imgUrl" [alt]="item.fromData.address">
+            </div>
+            <div class="address">
+              <mat-card-subtitle>{{ item.fromData.address }}</mat-card-subtitle>
+            </div>
+          </div>
+          <div class="to">
+            <mat-card-header>Destination</mat-card-header>
+            <div class="image-container">
+              <img mat-card-image [src]="item.toData.imgUrl" [alt]="item.toData.address">
+            </div>
+            <div class="address">
+              <mat-card-subtitle>{{ item.toData.address }}</mat-card-subtitle>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <!-- <button mat-icon-button (click)="updateAction(item)"> -->
+        <button mat-icon-button>
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="deleteAction(item)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </section>      
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+</div>

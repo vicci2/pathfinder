@@ -1,0 +1,23 @@
+export interface Dashboard {
+    date:string,
+    time:string,
+    author:string,
+    fromData:{
+        address:string,
+        imgUrl:string,
+        iconUrl:string,
+        location:{
+            lat:string,
+            lng:string,
+        }
+    },
+    toData:{
+        address:string,
+        imgUrl:string,
+        iconUrl:string,
+        location:{
+            lat:string,
+            lng:string,
+        }
+    },
+}

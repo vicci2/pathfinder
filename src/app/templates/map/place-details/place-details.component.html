@@ -1,0 +1,6 @@
+<mat-card *ngIf="data?.address">
+    <img [src]="data?.imgUrl" [alt]="data?.iconUrl" matCardImage class="placeImg">
+    <mat-card-header><img [src]="data?.iconUrl" [alt]="data?.iconUrl" mat-card-avatar>
+    <mat-card-title>{{data?.name}}</mat-card-title>
+    </mat-card-header>
+</mat-card>

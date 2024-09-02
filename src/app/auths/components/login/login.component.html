@@ -1,0 +1,49 @@
+<div class="container flexcol">
+  <div class="content flexcol" [formGroup]="logForm">
+    <mat-toolbar>
+      <div class="flexcol">
+        <mat-card-header>Login</mat-card-header>
+      </div>
+      <button mat-icon-button (click)="changeLogintype()">
+        <mat-icon>{{ mail ? 'mail' : 'person' }}</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-form-field appearance="outline">
+      <mat-label>{{ mail ? 'Username' : 'Email Address' }}</mat-label>
+      <input formControlName="userName" matInput placeholder="{{ mail ? 'Enter Your User Name' : 'Enter Your Email Address' }}" [type]="mail ? 'text' : 'email'">
+      <mat-icon matSuffix>{{ mail ? 'person' : 'mail' }}</mat-icon>
+      <mat-error *ngIf="hasError('userName', 'required')">
+        A valid {{ mail ? 'username' : 'email address' }} is required
+      </mat-error>
+      <mat-error *ngIf="hasError('userName', 'email') && !mail">
+        Please enter a valid email address
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input formControlName="passWord" matInput placeholder="Enter user password" [type]="hide ? 'password' : 'text'">
+      <mat-icon (click)="hide = !hide" matSuffix>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+      <mat-error *ngIf="hasError('passWord', 'required')">
+        Please enter your password
+      </mat-error>
+    </mat-form-field>
+    <button mat-raised-button [disabled]="logForm.invalid" color="primary" (click)="loginFunc()">
+      <mat-icon matSuffix>login</mat-icon>
+      <span>Login</span>
+    </button>
+    <button mat-button color="warn" [disabled]="logForm.pristine" (click)="resetForm()" class="reset">
+      <mat-icon>refresh</mat-icon>
+      <span>Reset</span>
+    </button>
+    <mat-hint class="mat-hint">
+      <p class="forgotPas" (click)="forgotPassword()">Forgot Password</p>
+      <p class="alt">Don't have an account? <span class="span" [routerLink]="['/signUp']">Sign Up</span></p>
+    </mat-hint>
+    <div class="orLinediv">
+      <p>Or</p>
+    </div>
+    <button mat-icon-button class="teLog flexrow" (click)="loginWithGoogle()">
+      <img mat-card-avatar src="../../../../assets/google.png" alt="Google Logo" loading="lazy" matTextPrefix>
+    </button>
+  </div>
+</div>

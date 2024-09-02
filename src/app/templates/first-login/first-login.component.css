@@ -1,0 +1,35 @@
+.container{
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+  }
+  .icon{
+    margin: 0 auto;
+  }
+  .flexcol {
+    display: flex;
+    flex-wrap: wrap;
+      flex-direction: column;
+    }
+    
+    .flexrow {
+      display: flex;
+      flex-direction: row;
+      gap: 10px; /* Adjust the gap between elements as needed */
+    }
+    
+    mat-form-field {
+      width: 100%;
+    }
+    
+    button {
+      margin-top: 10px; /* Adjust the margin above the button as needed */
+    }
+    /* Media query for small screens */
+  @media screen and (max-width: 600px) {
+    .flexrow {
+      flex-direction: column;
+      
+    }
+  }

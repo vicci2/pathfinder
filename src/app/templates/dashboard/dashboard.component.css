@@ -1,0 +1,110 @@
+
+.mat-card {
+    width: 100%;
+    max-width: 300px; /* Adjust the maximum width as needed */
+    margin: 0.2rem;
+    height: fit-content;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle box shadow */
+    transition: transform 0.2s; /* Add a smooth transition on hover */
+  }
+  
+  .example-card img {
+    width: 100%;
+    height: auto;
+    /* border-radius: 50rem; */
+  }
+  .mat-card-actions {
+    display: flex;
+    justify-content: space-between;
+    position: sticky;
+    background: rgba(255, 255, 255, 0.9);
+    z-index: 1;
+    border-top: 1px solid #ddd; /* Add a border to separate actions from content */
+  }
+  
+  button[mat-icon-button] {
+    cursor: pointer;
+    padding: .1rem; /* Increase padding for better touch interaction */
+    border-radius: 50%; /* Make buttons round */
+    background-color: #f5f5f534; /* Add a background color */
+  }
+  
+  button[mat-icon-button]:hover {
+    background: #e0e0e0;
+  }
+  
+  .container {
+    width: 100%;
+    height: 90vh;
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: .5rem;
+  }
+  
+  .responsiveGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 10px;
+  }
+  
+  .pics {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+  mat-card { /* Adjust the maximum width as needed */
+    margin: 0.2rem;
+    height: fit-content;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle box shadow */
+    transition: transform 0.2s; /* Add a smooth transition on hover */
+  }
+  
+  .from,.to {
+    width: 48%;
+    height: auto;
+  }
+  
+  .image-container {
+    flex: 1;
+    /* margin-right: 10px; Adjust margin as needed */
+    border-radius: .4rem;
+    overflow:hidden;
+  }
+  
+  .image-container img {
+    width: 100%;
+    height: 130px; /* Set the fixed height for all images */
+    object-fit: cover;
+    transition: transform 1.2s;
+  }
+  
+  .image-container:hover img {
+    transform: scale(1.5); /* Zoom in on hover */
+  }
+  
+  .sticky {
+    position: sticky;
+    background-blend-mode: overlay;
+    z-index: 1;
+    padding: 0.2rem;
+  }
+  
+  .stickyTop {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    background-blend-mode: overlay;
+    justify-content: space-between;
+  }
+  
+  .stickyBottom {
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    background-blend-mode: overlay;
+    justify-content: space-between;
+  }

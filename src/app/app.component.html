@@ -1,0 +1,38 @@
+<mat-toolbar *ngIf="authService.currentUser$ | async as user">
+  <button mat-icon-button class="example-icon" aria-label="Toggle sidenav" *ngIf="isHandset$ | async" (click)="toggleMenu()" [matMenuTriggerFor]="appMenu">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <span *ngIf="!(isHandset$ | async)" class="example-spacer">{{ title }}</span>
+
+  <button mat-flat-button class="example-icon" color="secondary" *ngIf="authService.currentUser$ | async; else loginBtn" (click)="logOut()">
+    <mat-icon>logout</mat-icon>Log Out
+  </button>
+
+  <ng-template #loginBtn>
+    <button mat-flat-button class="example-icon" color="secondary" aria-label="Example icon-button with share icon">
+      <mat-icon>login</mat-icon>Login
+    </button>
+  </ng-template>
+
+  <span class="example-spacer"></span>
+
+  <button mat-icon-button class="example-icon favorite-icon" *ngIf="!(isHandset$ | async)" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+
+  <button mat-icon-button class="example-icon" *ngIf="!(isHandset$ | async)" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
+
+  <mat-menu #appMenu="matMenu">
+    <button mat-menu-item *ngFor="let action of ['Favorite', 'Share']" (click)="menuAction(action)">
+      <mat-icon>{{ action.toLowerCase() }}</mat-icon>
+      <span>{{ action }}</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>
